@@ -1,23 +1,26 @@
 .navbar {
-  background: #1e272e;
-  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 16px 40px;
+  background-color: #1f2937;
 }
 
-.navbar h2 {
+.logo {
   color: white;
-  margin: 0;
 }
 
-.links a {
-  color: white;
-  margin-left: 20px;
+.nav-links {
+  display: flex;
+  gap: 30px; /* THIS FIXES CLOSENESS */
+}
+
+.nav-links a {
+  color: #c7d2fe;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
 }
 
-.links a:hover {
-  text-decoration: underline;
+.nav-links a:hover {
+  color: white;
 }

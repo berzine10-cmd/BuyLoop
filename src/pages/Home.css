@@ -1,0 +1,35 @@
+.home {
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(120deg, #6c63ff, #8e88ff);
+  color: white;
+}
+
+.home-content {
+  text-align: center;
+}
+
+.home-content h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.home-content p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.shop-btn {
+  background: white;
+  color: #6c63ff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.shop-btn:hover {
+  background: #f2f2f2;
+}

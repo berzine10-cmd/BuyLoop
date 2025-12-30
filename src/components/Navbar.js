@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-function Navbar() {
+export default function Navbar() {
   return (
     <nav className="navbar">
-      <h2>ShopEase</h2>
-      <div className="links">
+      <h2 className="logo">ShopEase</h2>
+
+      <div className="nav-links">
         <Link to="/">Home</Link>
         <Link to="/products">Products</Link>
         <Link to="/cart">Cart</Link>
@@ -13,5 +14,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;

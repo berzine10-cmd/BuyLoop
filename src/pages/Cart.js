@@ -1,34 +1,34 @@
-function Cart() {
+import { useCart } from "../context/CartContext";
+
+export default function Cart() {
+  const { cartItems, removeFromCart, totalAmount } = useCart();
+
   return (
-    <div className="page">
+    <div style={{ padding: "20px" }}>
       <h1>Your Cart</h1>
 
-      <div
-        style={{
-          background: "white",
-          padding: "30px",
-          borderRadius: "6px",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-          marginTop: "20px"
-        }}
-      >
-        <p>No items in cart.</p>
-        <button
-          style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            background: "#27ae60",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer"
-          }}
-        >
-          Continue Shopping
-        </button>
-      </div>
+      {cartItems.length === 0 && <p>Cart is empty</p>}
+
+      {cartItems.map(item => (
+        <div key={item.id} style={{
+          display: "flex",
+          alignItems: "center",
+          marginBottom: "15px"
+        }}>
+          <img
+            src={item.image}
+            alt={item.name}
+            style={{ width: "60px", marginRight: "15px" }}
+          />
+          <div style={{ flex: 1 }}>
+            <h4>{item.name}</h4>
+            <p>₹{item.price} × {item.qty}</p>
+          </div>
+          <button onClick={() => removeFromCart(item.id)}>Remove</button>
+        </div>
+      ))}
+
+      <h2>Total: ₹{totalAmount}</h2>
     </div>
   );
 }
-
-export default Cart;
