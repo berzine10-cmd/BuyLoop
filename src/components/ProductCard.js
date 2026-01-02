@@ -1,34 +1,49 @@
-import { useCart } from "../context/CartContext";
+import React from "react";
 import "./ProductCard.css";
-import { useState } from "react";
+import { useCart } from "../context/CartContext";
 
-export default function ProductCard({ product }) {
-  const { addToCart } = useCart();
-  const [added, setAdded] = useState(false);
+function ProductCard({ product }) {
+  const { cartItems, addToCart, increaseQty, decreaseQty } = useCart();
 
-  const handleAdd = () => {
-    addToCart(product);
-    setAdded(true);
-
-    setTimeout(() => {
-      setAdded(false);
-    }, 1000);
-  };
+  const cartItem = cartItems.find(item => item.id === product.id);
 
   return (
     <div className="product-card">
       <img src={product.image} alt={product.name} />
-
       <h3>{product.name}</h3>
       <p>₹{product.price}</p>
 
-      <button
-        className={`add-btn ${added ? "added" : ""}`}
-        onClick={handleAdd}
-        disabled={added}
-      >
-        {added ? "Added ✓" : "Add to Cart"}
-      </button>
+      {!cartItem ? (
+        <button onClick={() => addToCart(product, 1)}>
+          Add to Cart
+        </button>
+      ) : (
+        <>
+          <div className="qty-controls">
+            <button
+              className="qty-btn"
+              onClick={() => decreaseQty(product.id)}
+            >
+              -
+            </button>
+
+            <span>{cartItem.qty}</span>
+
+            <button
+              className="qty-btn"
+              onClick={() => increaseQty(product.id)}
+            >
+              +
+            </button>
+          </div>
+
+          <p style={{ color: "green", fontWeight: "600" }}>
+            Added
+          </p>
+        </>
+      )}
     </div>
   );
 }
+
+export default ProductCard;

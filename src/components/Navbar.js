@@ -4,7 +4,7 @@ import "./Navbar.css";
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <h2 className="logo">ShopEase</h2>
+      <h2 className="logo">BuyLoop</h2>
 
       <div className="nav-links">
         <Link to="/">Home</Link>
